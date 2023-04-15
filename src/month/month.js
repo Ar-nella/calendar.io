@@ -4,18 +4,30 @@ let month = ()=>{
     return {
 
         fillEventOnBoard : (eventsData) => {
-                let i, j;
+                let i, j, k;
                 let eventFilter = filterEventForPeriode(eventsData, caseDays[0].day, caseDays[41].day);
                 let eventDatasOrder = orderEventByDate(eventFilter);
 
 
                 for (i = 0; i < eventDatasOrder.events.length; i++) {
+                    let position;
                     let eventDateStart = new Date(eventDatasOrder.events[i][eventDatasOrder.start]);
                     let eventDateEnd = eventDatasOrder.events[i][eventDatasOrder.end] ? new Date(eventDatasOrder.events[i][eventDatasOrder.end]) : eventDateStart;
                     let distanceDayFrom = differenceDay(caseDays[0].day, eventDateStart);
-                    console.log(distanceDayFrom + differenceDay(eventDateStart, eventDateEnd) + 1);
                     for (j = distanceDayFrom; j < distanceDayFrom + differenceDay(eventDateStart, eventDateEnd) + 1; j++) {
-                        caseDays[j].events.push(eventDatasOrder.events[i]);
+                        if (j == distanceDayFrom)
+                            position = caseDays[j].events.push(eventDatasOrder.events[i]);
+                        else{
+                            for (k = 0; k < position; k++) {
+                                if (k !== position - 1){
+                                    if(caseDays[j].events[k] == undefined)
+                                        caseDays[j].events.push(null);
+                                }
+                                else{
+                                    caseDays[j].events.push(eventDatasOrder.events[i]);
+                                }
+                            }
+                        }
                     }
                     
                 }
@@ -72,6 +84,8 @@ let month = ()=>{
                     [
                         m("span", {class: "head-span"}, caseDay.day.getDate()),
                         m("span", {class: 'body-span'}, caseDay.events.map(event=>{
+                            if(event == null)
+                                return m("span")
                             return m("span", {
                                 'data-event-name' : event[vnode.attrs.eventsData.name]
                             });
