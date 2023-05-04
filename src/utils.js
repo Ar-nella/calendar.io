@@ -109,3 +109,49 @@ let differenceDay = (date1, date2)=>{
     let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
     return Math.abs(TotalDays);
 }
+
+let testIfContainNull = (array)=>{
+    if(array.length == 0)
+        return false;
+    else{
+        let length = array.length, i;
+        for (i = 0; i < array.length; i++) {
+            if(array[i] == null)
+                return true;
+        }
+
+        return false;
+    }
+}
+
+let nextPositionNull = (array) =>{
+    for (i = 0; i < array.length; i++) {
+        if(array[i] == null)
+            return i;
+    }
+}
+
+let filterBadEvent = (eventData) => {
+    if(eventData.events){
+        let events = eventData.events.filter(event=>{
+            if(eventData.start in event && isIsoDate(event[eventData.start]))
+            {
+                let start = new Date(event[eventData.start]);
+    
+                if(start.toString() !== "Invalid Date")
+                    if(eventData.end in event && isIsoDate(event[eventData.end])){
+                        let end = new Date(event[eventData.start]);
+                        if(start.toString() !== "Invalid Date")
+                            if(end >= start)
+                                return true;
+                    }
+                
+            }
+            return false;
+        });
+    
+        eventData.events = events;
+    }
+
+    return eventData;
+}
