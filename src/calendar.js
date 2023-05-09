@@ -33,7 +33,8 @@ let calendar = () => {
         },
 
         onbeforeupdate: (vnode)=>{
-            vnode.attrs.date = currentDate;
+            
+            vnode.attrs.date = currentDate.toISOString();
         },
 
         view : (vnode)=>{

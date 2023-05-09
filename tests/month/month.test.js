@@ -60,6 +60,71 @@ QUnit.module("mode month test", ()=>{
     });
 
 
+    // QUnit.test("test load one long event on month overflow start", assert=>{
+    //     loadCalendar({eventsData : {
+    //         events : [{
+    //             name : "Test",
+    //             S : "2022-01-01",
+    //             E : "2023-01-04"
+    //         }],
+
+    //         name : "name",
+
+    //         start : "S",
+
+    //         end : "E"
+    //     }, mode : "month", date : "2023-01-15"});
+
+    //     assert.equal(
+    //         document.querySelector('#calendar #body .content span:nth-child(1) span.body-span span:nth-child(1)').getAttribute('data-event-name'), 
+    //         "Test");
+
+    //     assert.equal(
+    //         document.querySelector('#calendar #body .content span:nth-child(2) span.body-span span:nth-child(1)').getAttribute('data-event-name'), 
+    //         "Test");
+
+    //     assert.equal(
+    //         document.querySelector('#calendar #body .content span:nth-child(3) span.body-span span:nth-child(1)').getAttribute('data-event-name'), 
+    //         "Test");
+
+    //     assert.equal(
+    //         document.querySelector('#calendar #body .content span:nth-child(4) span.body-span span:nth-child(1)').getAttribute('data-event-name'), 
+    //         "Test");
+    // });
+
+    // QUnit.test("test display one long event on month overflow start", assert=>{
+    //     loadCalendar({eventsData : {
+    //         events : [{
+    //             name : "Test",
+    //             S : "2022-01-01",
+    //             E : "2023-01-04"
+    //         }],
+
+    //         name : "name",
+
+    //         start : "S",
+
+    //         end : "E"
+    //     }, mode : "month", date : "2023-01-15"});
+
+    //     assert.equal(
+    //         document.querySelector('#calendar #body .content span:nth-child(1) span.body-span span:nth-child(1)').getAttribute('data-event-name'), 
+    //         "Test");
+
+    //     assert.equal(
+    //         document.querySelector('#calendar #body .content span:nth-child(2) span.body-span span:nth-child(1)').getAttribute('data-event-name'), 
+    //         "");
+
+    //     assert.equal(
+    //         document.querySelector('#calendar #body .content span:nth-child(3) span.body-span span:nth-child(1)').getAttribute('data-event-name'), 
+    //         "");
+
+    //     assert.equal(
+    //         document.querySelector('#calendar #body .content span:nth-child(4) span.body-span span:nth-child(1)').getAttribute('data-event-name'), 
+    //         "");
+    // });
+
+
     QUnit.test("test load one event on month ", assert=>{
         loadCalendar({eventsData : {
             events : [{
@@ -105,7 +170,7 @@ QUnit.module("mode month test", ()=>{
         assert.equal(
             document.querySelector('#calendar #body .content span:nth-child(3) span.body-span span:nth-child(1)').getAttribute('data-event-name'), 
             "Test2");
-        });
+    });
 
     QUnit.test("test load two event on month in same moment ", assert=>{
         loadCalendar({eventsData : {
@@ -345,7 +410,9 @@ QUnit.module("mode month test", ()=>{
 
             name : "name",
 
-            start : "S"
+            start : "S",
+
+            end : "E"
         }, mode : "month", date : "2023-01-15"});
 
         assert.equal(
@@ -367,17 +434,94 @@ QUnit.module("mode month test", ()=>{
 
             name : "name",
 
-            start : "S"
+            start : "S",
+
+            end : "E"
         }, mode : "month", date : "2023-01-15"});
 
         assert.equal(
             document.querySelector('#calendar #body .content span:nth-child(1) span.body-span span:nth-child(1)').innerHTML, 
             "Test");
 
+
+        assert.equal(
+            document.querySelector('#calendar #body .content span:nth-child(2) span.body-span span:nth-child(1)').innerHTML, 
+            "");
+        
+        assert.equal(
+            document.querySelector('#calendar #body .content span:nth-child(3) span.body-span span:nth-child(1)').innerHTML, 
+            "");
+
+        assert.equal(
+            document.querySelector('#calendar #body .content span:nth-child(4) span.body-span span:nth-child(1)').innerHTML, 
+            "");
+
+        assert.equal(
+            document.querySelector('#calendar #body .content span:nth-child(5) span.body-span span:nth-child(1)').innerHTML, 
+            "");
+
+        assert.equal(
+            document.querySelector('#calendar #body .content span:nth-child(6) span.body-span span:nth-child(1)').innerHTML, 
+            "");
+
+
+        assert.equal(
+            document.querySelector('#calendar #body .content span:nth-child(7) span.body-span span:nth-child(1)').innerHTML, 
+            "");
+
+
         assert.equal(
             document.querySelector('#calendar #body .content span:nth-child(8) span.body-span span:nth-child(1)').innerHTML, 
             "Test");
     });
+
+            
+    QUnit.test("test display three event", assert=>{
+        loadCalendar({eventsData : {
+            events : [{
+                name : "Test",
+                S : "2023-01-01",
+                E : "2023-01-02"
+            },{
+                name : "Test1",
+                S : "2023-01-02",
+                E : "2023-01-03"
+            },{
+                name : "Test2",
+                S : "2023-01-03",
+                E : "2023-01-04"
+            }],
+
+            name : "name",
+
+            start : "S",
+
+            end : "E"
+        }, mode : "month", date : "2023-01-15"});
+
+        assert.equal(
+            document.querySelector('#calendar #body .content span:nth-child(1) span.body-span span:nth-child(1)').innerHTML, 
+            "Test");
+        assert.equal(
+            document.querySelector('#calendar #body .content span:nth-child(2) span.body-span span:nth-child(1)').innerHTML, 
+            "");
+
+        assert.equal(
+            document.querySelector('#calendar #body .content span:nth-child(2) span.body-span span:nth-child(2)').innerHTML, 
+            "Test1");
+        assert.equal(
+            document.querySelector('#calendar #body .content span:nth-child(3) span.body-span span:nth-child(2)').innerHTML, 
+            "");
+
+        assert.equal(
+            document.querySelector('#calendar #body .content span:nth-child(3) span.body-span span:nth-child(1)').innerHTML, 
+            "Test2");
+        assert.equal(
+            document.querySelector('#calendar #body .content span:nth-child(4) span.body-span span:nth-child(1)').innerHTML, 
+            "");
+    });
+        
+
 
     
 });

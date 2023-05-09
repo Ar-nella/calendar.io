@@ -118,8 +118,6 @@ QUnit.module("Test for utils function", ()=>{
 
         });
 
-        console.log(eventFilter.events);
-
         assert.equal(eventFilter.events.length, 1);
     });
 

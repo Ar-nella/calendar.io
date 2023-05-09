@@ -9,6 +9,8 @@
 - [x] 3e Type de display d'event
 - [x] Function to trigger on click
 - [x] Function to filter event to display
-- [ ] Displaying event name on month
-- [ ] CSS on month
-- [ ] Test day as month mode
+- [x] Displaying event name on month
+- [x] CSS on month
+- [x] Test day as month mode
+- [ ] Overflow month
+- [ ] CSS on days

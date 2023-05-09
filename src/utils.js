@@ -155,3 +155,37 @@ let filterBadEvent = (eventData) => {
 
     return eventData;
 }
+
+/**
+ * 
+ * @param {*} eventsData 
+ * @param {Date} date 
+ */
+
+let filterEventForDay = (eventDatas, date) =>{
+    return eventDatas.events.filter(event=>{
+        return (new Date(event[eventDatas.start])).toLocaleDateString() == date.toLocaleDateString();
+    });
+}
+
+let compareStrictDate = (date1, date2)=>{
+    console.log(date1, date2);
+    return date1.toLocaleDateString() == date2.toLocaleDateString();
+}
+
+let isEventBelongToDate = (event, date, eventStart, eventEnd) =>{
+    let start = new Date(event[eventStart]);
+    let end;
+
+    if(eventEnd && event[eventEnd]){
+        end = new Date(event[eventEnd]);
+    }
+    else{
+        end = start;
+    }
+
+    start.setUTCHours(0, 0, 0);
+    end.setUTCHours(0, 0, 0);
+    date.setUTCHours(0, 0, 0);
+    return start <= date && end >= date;
+}
