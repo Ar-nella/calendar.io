@@ -1,6 +1,24 @@
 
 QUnit.module("calendar global test", ()=>{
 
+    QUnit.test("Test mode ressource", (assert)=>{
+        loadCalendar({ressource : true});
+
+        assert.equal("true", document.querySelector('#calendar').getAttribute("data-ressource"));
+    });
+
+    QUnit.test("Test mode ressource", (assert)=>{
+        loadCalendar({ressource : false});
+
+        assert.equal("false", document.querySelector('#calendar').getAttribute("data-ressource"));
+    });
+
+    QUnit.test("Test mode ressource", (assert)=>{
+        loadCalendar({});
+
+        assert.equal("false", document.querySelector('#calendar').getAttribute("data-ressource"));
+    });
+
     QUnit.test("Test d'affichage de l'en tete par defaut", (assert)=>{
         loadCalendar({});
         let date = new Date();

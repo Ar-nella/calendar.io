@@ -1,3 +1,8 @@
+/**
+ * Translate index month to the name of month
+ * @param {Number} index 
+ * @returns {String}
+ */
 let translateMonth = (index)=>{
     let month = [
         "Janvier",
@@ -17,6 +22,11 @@ let translateMonth = (index)=>{
     return month[index];
 }
 
+/**
+ * Translate index day to the name of days
+ * @param {Number} index 
+ * @returns {String}
+ */
 let translateDay = (index)=>{
     let day = [
         "Dimanche",
@@ -31,7 +41,7 @@ let translateDay = (index)=>{
     return day[index];
 }
 /**
- * 
+ * Parse date to string format depending to the mode
  * @param {Date} date 
  * @param {string} mode 
  * @returns {String}
@@ -48,7 +58,7 @@ let date2String = (date, mode = "days") => {
 }
 
 /**
- * Verifie si la chaine est une date au format ISO
+ * Check if string date is in ISO format
  * @param {String} str
  * @returns {boolean}
  */
@@ -60,7 +70,7 @@ let isIsoDate = (str) => {
 }
 
 /**
- * filtre les evenements sur une periode
+ * Filter Event on periode
  * @param {Object} eventDatas 
  * @param {Date} dateStart 
  * @param {Date} dateEnd 

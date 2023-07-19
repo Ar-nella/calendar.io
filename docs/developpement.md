@@ -16,12 +16,16 @@ options: Objet
             Nom du champ representant la date de fin de l'evenement
         - action: Function
             Function to trigger when click on event
-        -filter : Function
+        - filter : Function
             Function to filter event
+        - id : string
+            Nom du champ representant l'id
     - date: string (Optionel)
         Date a laquelle le calendrier est charge. Il doit etre au format ISO (YYYY-MM-DD)
     - mode: string (Optionel)
         Mode de vue a laquelle le calendrier est charger
+    - ressource : Boolean (Optionel)
+        Load calendar on ressource
 */
 m.mount(root, {
     view : ()=>{
